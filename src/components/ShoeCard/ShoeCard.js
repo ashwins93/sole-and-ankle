@@ -45,7 +45,7 @@ const ShoeCard = ({
         <Spacer size={12} />
         <Row>
           <Name>{name}</Name>
-          <Price onSale={variant === "on-sale"}>{formatPrice(price)}</Price>
+          <Price variant={variant}>{formatPrice(price)}</Price>
           {variant === "on-sale" && (
             <SalePrice>{formatPrice(salePrice)}</SalePrice>
           )}
@@ -92,7 +92,8 @@ const Name = styled.h3`
 `;
 
 const Price = styled.span`
-  text-decoration: ${(p) => (p.onSale ? "line-through" : "revert")};
+  text-decoration: ${(p) =>
+    p.variant === "on-sale" ? "line-through" : "revert"};
 `;
 
 const ColorInfo = styled.p`
